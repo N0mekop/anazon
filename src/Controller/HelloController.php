@@ -8,9 +8,12 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class HelloController extends AbstractController
 {
-    #[Route('/hello', name: 'app_hello')]
-    public function index(): Response
+    #[Route('/hello/{name<\w+>}', methods: [ 'GET' ], name: 'app_hello')]
+    public function index(string $name): Response
     {
+
+        dump($name);
+
         return $this->render('hello/index.html.twig', [
             'controller_name' => 'HelloController',
         ]);
