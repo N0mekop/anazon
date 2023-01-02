@@ -4,14 +4,17 @@ namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 class HelloController extends AbstractController
 {
     #[Route('/hello/{name<\w+>}', methods: [ 'GET' ], name: 'app_hello')]
-    public function index(string $name = 'Kevin'): Response
+    public function index(Request $request, string $name = 'Kevin'): Response
     {
+
+        dd($request->headers);
 
 /*         dump($name);
 
@@ -22,5 +25,6 @@ class HelloController extends AbstractController
         return new JsonResponse([
             'name' => $name,
         ]);
+        
     }
 }
