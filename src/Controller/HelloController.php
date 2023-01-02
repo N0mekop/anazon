@@ -9,7 +9,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class HelloController extends AbstractController
 {
     #[Route('/hello/{name<\w+>}', methods: [ 'GET' ], name: 'app_hello')]
-    public function index(string $name): Response
+    public function index(string $name = 'Kevin'): Response
     {
 
         dump($name);
