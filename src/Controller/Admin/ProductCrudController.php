@@ -5,7 +5,9 @@ namespace App\Controller\Admin;
 use App\Entity\Product;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\CollectionField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\Field;
+use EasyCorp\Bundle\EasyAdminBundle\Field\MoneyField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
 
 class ProductCrudController extends AbstractCrudController
@@ -19,7 +21,8 @@ class ProductCrudController extends AbstractCrudController
     {
         yield Field::new('name');
         yield AssociationField::new('category')->setRequired(false);
-        yield Field::new('price');
+        yield MoneyField::new('price')->setCurrency('EUR');
+        // yield CollectionField::new('productImages')->hideOnIndex();
         yield TextEditorField::new('description')->hideOnIndex();
     }
 }
